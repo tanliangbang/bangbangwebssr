@@ -1,0 +1,93 @@
+@import "../../style/common.less";
+.userCenter{
+  .utop {
+    background: #fff;
+    border: 1px solid #dcdcdc;
+    margin: 10px auto 0;
+    overflow: hidden;
+    position: relative;
+    .userAavar {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin-top: 25px;
+      margin-left: 25px;
+      margin-bottom: 25px;
+      border:1px solid @borderColor;
+    }
+    .simpleInfo {
+      margin-left: 30px;
+      >div:first-child {
+        margin-top: 40px;
+        font-size: 24px;
+        color: #333;
+        font-weight: 400;
+      }
+      >div:nth-child(2) {
+        font-size: 16px;
+        color: #333;
+        margin-top: 10px;
+        >span{
+          margin:0px 10px;
+        }
+      }
+      >div:nth-child(3) {
+        overflow: hidden;
+        font-size: 14px;
+        color: #999;
+        border-top: 1px solid #f0f0f0;
+        padding-top: 8px;
+        margin-top: 10px;
+        line-height: 22px;
+        word-wrap: break-word;
+        word-break: break-all;
+      }
+    }
+    .changeInfoBtn {
+      background: @mainColor;
+      color: #fff;
+      text-align: center;
+      width: 100px;
+      height: 35px;
+      line-height: 35px;
+      margin-top: 70px;
+      margin-right: 50px;
+      cursor: pointer;
+      font-size:14px;
+    }
+  }
+  .listContent{
+    background:#fff;
+    .content{
+      padding:20px;
+    }
+  }
+  .nav{
+    display: flex;
+    flex-wrap: wrap;
+    >div{
+      flex:1;
+      background:#eee;
+      color:@mainColor;
+      height:45px;
+      text-align: center;
+      line-height: 45px;
+      border-right:1px solid #fff;
+      cursor: pointer;
+    }
+    >div:last-child{
+      border-right:none;
+    }
+    .active{
+      background:@mainColor;
+      color:#fff;
+    }
+  }
+
+}
+.fl{
+  float:left;
+}
+.fr{
+  float:right;
+}

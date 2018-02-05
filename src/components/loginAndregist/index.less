@@ -1,0 +1,112 @@
+@import "../../style/common.less";
+.mask{
+  width:100%;
+  height:100%;
+  position:fixed;
+  top:0px;
+  z-index:9998;
+  background:#000;
+  opacity:0.7;
+}
+.loginAndRegist{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index:9999;
+  position:fixed;
+  width:100%;
+  height:100%;
+  top:0px;
+  animation:showLoginAnimation 0.4s;
+}
+.login{
+  background:#fff;
+  position:relative;
+  padding:20px;
+  border-radius:5px;
+  .title{
+    border-bottom:1px solid @borderColor;
+    >span{
+      display:inline-block;
+      width:80px;
+      height:50px;
+      font-size:18px;
+      line-height:50px;
+      text-align: center;
+      cursor: pointer;
+    }
+  }
+  .active{
+    border-bottom:2px solid @mainColor;
+    color:@mainColor;
+  }
+  .nomalInput{
+    padding:30px 30px;
+    .inputClass{
+      margin-bottom:10px;
+      >input{
+        width: 279px;
+        padding: 13px;
+        background-color: #fff;
+        border: 1px solid @borderColor;
+        box-shadow: 2px 0px 5px 0px #fff;
+        border-radius:5px;
+      }
+      >p{
+        font-size:12px;
+        padding-left:5px;
+        color:red;
+      }
+    }
+    >p{
+      text-align: center;
+      font-size:12px;
+      color:red;
+      margin-top:-15px;
+    }
+    .otherOpear{
+      font-size:14px;
+      color:@gray-color;
+      >input:nth-child(1){
+        vertical-align: -2px;
+      }
+      >a{
+        float:right;
+        color:@mainColor;
+      }
+    }
+    >button{
+      width:100%;
+      height:40px;
+      text-align: center;
+      line-height: 40px;
+      background:@mainColor;
+      border:none;
+      color:#fff;
+      font-size:16px;
+      margin-top:20px;
+      cursor: pointer;
+    }
+  }
+}
+
+.showAnimation{
+  .mask{
+    display:block;
+  }
+  .loginAndRegist{
+    animation:showFrameAnimation 0.4s ease-in;
+    animation-fill-mode: forwards;
+  }
+}
+.hideAnimation{
+  .mask{
+    height:0;
+    animation:maskShow 0.4s ease-in;
+  }
+  .loginAndRegist{
+    animation:hideFrameAnimation 0.2s;
+    animation-fill-mode: forwards;
+  }
+}
+
