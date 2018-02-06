@@ -39,10 +39,10 @@ export default {
     ListItem
   },
   data () {
-    return {
-    }
+    return {}
   },
-  created () {
+  mounted () {
+    window.scroll(0, 0)
   },
   computed: {
     ...mapGetters({

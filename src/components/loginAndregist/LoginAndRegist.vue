@@ -109,7 +109,6 @@ export default {
           }
           data = await regist(this.myForm.username, Tool.md5(this.myForm.password))
         }
-        data = data.data
         if (data.statusCode === 500) {
           this.rules.loginError.showError = true
           this.rules.loginError.message = data.errorMsg
@@ -127,7 +126,7 @@ export default {
           }, 2000)
           return false
         }
-        this.setUserInfo(data)
+        this.setUserInfo(data.data)
         if (this.isLogin) {
           this.$prompt.success('登入成功')
         } else {

@@ -19,7 +19,6 @@ export function createAPI({ server }) {
   } else {
     api = {
       get(url, params = {}) {
-        console.log(url, params)
         return new Promise((resolve, reject) => {
           axios({
             url,

@@ -63,6 +63,7 @@ export default {
     }
   },
   mounted () {
+    window.scroll(0, 0)
     if (this.$route.query.type) {
       this.type = this.$route.query.type
     } else {
@@ -72,7 +73,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      resList: 'getResList',
+      resList: 'getCommunityNav',
       communityList: 'getResContentList',
       readyRank: 'getReadyRank',
       recommend: 'getRecommend'
@@ -80,6 +81,7 @@ export default {
   },
   methods: {
     async getCurrDate (currpage) {
+      window.scroll(0, 0)
       if (this.$route.query.type) {
         this.type = this.$route.query.type
       }
@@ -92,10 +94,10 @@ export default {
       return Tool.formatDate2(date, '-')
     },
     toCommunity (type) {
-      this.$router.push('Community?type=' + type)
+      this.$router.push('community?type=' + type)
     },
     fetchData () {
-      if (this.$route.name === 'community') {
+      if (this.$route.name === 'community' && this.$route.query.type && this.type !== null) {
         this.getCurrDate(1)
       }
     },
@@ -114,9 +116,9 @@ export default {
   async asyncData(context) {
     let store = context.store
     let type = context.route.query.type
-    await store.dispatch('getResList', 'community')
+    await store.dispatch('getCommunityNav', 'community')
     if (!type) {
-      type = store.state.res.resList[0].name
+      type = store.state.res.communityNav[0].name
     }
     await store.dispatch('getReadyRank', {type: type, size: 5})
     await store.dispatch('getRecommend', {type: type, size: 5})

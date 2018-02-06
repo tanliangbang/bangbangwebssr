@@ -10,7 +10,7 @@
            <p class="model-title">精品文章  <router-link to="/resContentList"> 更多精品文章</router-link></p>
           <div class="list-model1">
             <div v-for="(item) in goodArticles.content" :key="item.id" class="item">
-              <p><router-link :to="{ path: '/resContent',query: { id: item.id, type: 'goodarticles' }}">{{item.content.title}}</router-link></p>
+              <p><router-link target="_blank" :to="{ path: '/resContent',query: { id: item.id, type: 'goodarticles' }}">{{item.content.title}}</router-link></p>
               <div>
                 <span>作者:&nbsp;{{item.content.from}}</span>&nbsp;&nbsp;<span>日期&nbsp;:{{formatDate(item.createTime,'-')}}</span>&nbsp;&nbsp;<span>&nbsp;阅读:&nbsp;{{item.readyNum}}</span>
               </div>
@@ -81,7 +81,8 @@ export default {
       myproduction: 'getIndexProduction'
     })
   },
-  created () {
+  mounted () {
+    window.scroll(0, 0)
   },
   methods: {
     formatDate (date) {
@@ -89,7 +90,7 @@ export default {
     }
   },
   async asyncData({ store }) {
-    await store.dispatch('getResContentList', {type: 'production', currpage: 1, size: 10})
+    await store.dispatch('getResContentList', {type: 'production', currpage: 1, size: 4})
     return store.dispatch('getResContentList', {type: 'goodarticles', currpage: 1, size: 10})
   }
 }

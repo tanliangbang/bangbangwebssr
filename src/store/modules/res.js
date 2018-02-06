@@ -3,13 +3,17 @@ import * as api from '../../service/getData'
 const state = {
   resContentList: {},
   myprouction: {},
-  resList: [],
-  resContent: {}
+  resContent: {},
+  communityNav: [],
+  articleNav: []
 }
 
 const getters = {
-  getResList: state => {
-    return state.resList
+  getArticleNav: state => {
+    return state.articleNav
+  },
+  getCommunityNav: state => {
+    return state.communityNav
   },
   getResContent: state => {
     return state.resContent
@@ -48,8 +52,11 @@ const mutations = {
   GET_MYPRODUCTION: (state, data) => {
     state.myprouction = data.data
   },
-  GET_RESLIST: (state, data) => {
-    state.resList = data
+  GET_ARTICLENAV: (state, data) => {
+    state.articleNav = data
+  },
+  GET_COMMUNITY_NAV: (state, data) => {
+    state.communityNav = data
   },
   GET_RESCONTENT: (state, data) => {
     state.resContent = data[0]
@@ -57,9 +64,16 @@ const mutations = {
 }
 
 const actions = {
-  getResList ({ state, commit }, type) {
+  getArticleNav ({ state, commit }, type) {
     return api.getNav(type).then((response) => {
-      commit('GET_RESLIST', response.data)
+      commit('GET_ARTICLENAV', response.data)
+    }).catch((error) => {
+      console.log(error)
+    })
+  },
+  getCommunityNav ({ state, commit }, type) {
+    return api.getNav(type).then((response) => {
+      commit('GET_COMMUNITY_NAV', response.data)
     }).catch((error) => {
       console.log(error)
     })

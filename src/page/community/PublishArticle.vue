@@ -80,6 +80,7 @@ export default {
     }
   },
   mounted () {
+    window.scroll(0, 0)
     this.type = this.$route.query.type
     let _this = this
     if (!_this.$store.state.common.userInfo || _this.$store.state.common.userInfo === null) {

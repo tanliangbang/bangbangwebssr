@@ -66,6 +66,7 @@ export default {
     })
   },
   mounted () {
+    window.scroll(0, 0)
     this.$store.dispatch('getReadyRank', {type: this.type, size: 5})
     this.$store.dispatch('getRecommend', {type: this.type, size: 5})
   },

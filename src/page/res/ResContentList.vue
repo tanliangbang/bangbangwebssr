@@ -57,18 +57,17 @@ export default {
     }
   },
   mounted () {
+    window.scroll(0, 0)
     if (this.$route.query.type) {
       this.type = this.$route.query.type
     } else {
       this.type = this.resList[0].name
     }
-    this.$store.dispatch('getReadyRank', {type: this.type, size: 5})
-    this.$store.dispatch('getRecommend', {type: this.type, size: 5})
     this.pagination.totalSize = this.resContentList.pageTotal
   },
   computed: {
     ...mapGetters({
-      resList: 'getResList',
+      resList: 'getArticleNav',
       resContentList: 'getResContentList',
       readyRank: 'getReadyRank',
       recommend: 'getRecommend'
@@ -76,6 +75,7 @@ export default {
   },
   methods: {
     async getCurrDate (currpage) {
+      window.scroll(0, 0)
       if (this.$route.query.type) {
         this.type = this.$route.query.type
       }
@@ -91,7 +91,7 @@ export default {
       this.$router.push('resContentList?type=' + name)
     },
     fetchData () {
-      if (this.$route.name === 'resContentList') {
+      if (this.$route.name === 'resContentList' && this.$route.query.type && this.type !== null) {
         this.getCurrDate(1)
       }
     }
@@ -102,10 +102,12 @@ export default {
   async asyncData(context) {
     let store = context.store
     let type = context.route.query.type
-    await store.dispatch('getResList', 'myArticle')
+    await store.dispatch('getArticleNav', 'myArticle')
     if (!type) {
-      type = store.state.res.resList[0].name
+      type = store.state.res.articleNav[0].name
     }
+    await store.dispatch('getReadyRank', {type: type, size: 5})
+    await store.dispatch('getRecommend', {type: type, size: 5})
     return store.dispatch('getResContentList', {type: type, currpage: 1, size: 5})
   }
 }

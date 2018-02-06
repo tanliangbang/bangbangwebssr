@@ -5,7 +5,7 @@
       <img v-if="item.content.titleImg" :src="item.content.titleImg">
       <img v-if="!item.content.titleImg" src="/static/img/user.jpg">
 
-      <p><router-link :to="{ path: '/resContent',query: { id: item.id, type: type }}">{{item.content.title}}</router-link></p>
+      <p><router-link target="_blank" :to="{ path: '/resContent',query: { id: item.id, type: type }}">{{item.content.title}}</router-link></p>
       <div>{{item.content.from}} 发表月:{{formatDate(item.createTime)}}</div>
     </div>
   </div>

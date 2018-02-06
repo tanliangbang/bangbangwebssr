@@ -69,22 +69,21 @@ export default {
     }
   },
   created () {
-    if (window) {
-      window.scrollTo(0, 0)
-    }
     setTimeout(function () {
       let userInfo = this.$store.state.common.userInfo
       if (!userInfo || userInfo === null) {
         this.$router.push('/home')
       }
     }.bind(this), 1000)
-
     this.initDate()
+  },
+  mounted () {
+    window.scrollTo(0, 0)
   },
   methods: {
     async initDate () {
       let obj = await api.getResContentList('javacommunity', 0, 10)
-      this.articleList = obj.content
+      this.articleList = obj.data.content
     },
     showChangeUser () {
       this.$refs.changeUserInfo.showFrame()

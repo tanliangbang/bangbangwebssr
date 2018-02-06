@@ -104,7 +104,7 @@ export default {
     },
     async changeUser () {
       let user = await api.changeUserInfo(this.userInfo)
-      this.setUserInfo(user)
+      this.setUserInfo(user.data)
       this.$prompt.success('个人信息修改成功')
       Tool.localItem('userInfo', JSON.stringify(user))
     }
