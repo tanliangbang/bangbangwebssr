@@ -1,4 +1,7 @@
-import http from './../api'
+import config from 'config/index'
+import { createAPI } from 'create-api'
+
+const http = createAPI(config)
 
 /**
  * 获取首页导航栏

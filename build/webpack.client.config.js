@@ -9,7 +9,7 @@ const SWPrecachePlugin = require('sw-precache-webpack-plugin')
 const config = merge(base, {
   resolve: {
     alias: {
-      'create-api': path.resolve(__dirname, '../src/api/create-api-client.js')
+      'create-api': path.resolve(__dirname, '../src/service/create-api-client.js')
     }
   },
   plugins: [

@@ -13,7 +13,7 @@ const config = merge(base, {
   },
   resolve: {
     alias: {
-      'create-api': path.resolve(__dirname, '../src/api/create-api-server.js')
+      'create-api': path.resolve(__dirname, '../src/service/create-api-server.js')
     }
   },
   externals: Object.keys(require('../package.json').dependencies),

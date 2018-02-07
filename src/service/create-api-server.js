@@ -5,7 +5,7 @@
  */
 import qs from 'qs'
 import axios from 'axios'
-import { parseCookie } from './../utils/util'
+import { parseCookie } from '../utils/util'
 
 const SSR = global.__VUE_SSR_CONTEXT__
 
